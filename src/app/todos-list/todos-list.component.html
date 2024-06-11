@@ -1,0 +1,32 @@
+<h1>NgRx Signal Store Todo App</h1>
+
+<p-panel header="Todo Input">
+  <div class="flex flex-column align-items-center gap-3">
+    <label>Enter a TODO and press Enter</label>
+    <div class="flex align-items-center gap-1">
+      <input type="text" pInputText #input (keyup.enter)="onAddTodo(input.value)"/>
+      <span class="pi pi-file-edit" style="font-size: 2rem"></span>
+    </div>
+    <div class="p-2">
+      <mat-button-toggle-group #filter (change)="onFilterTodos($event)" >
+        <mat-button-toggle value="all">All</mat-button-toggle>
+        <mat-button-toggle value="pending">Pending</mat-button-toggle>
+        <mat-button-toggle value="completed">Completed</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>  
+  </div>
+    <div class="flex flex-column gap-3">
+    @for(todo of store.filteredTodos(); track todo.id; let index = $index) {
+      
+        <div class="flex gap-1 justify-content-around">
+          <span class="pi pi-trash" style="font-size: .75rem" (click)="onDeleteTodo(todo.id, $event)"></span>
+          <span [ngStyle]="{'text-decoration': todo.completed ? 'line-through' : 'none'}">{{todo.title}}</span>
+          <p-checkbox [(ngModel)]="todo.completed" [binary]="true" inputId="binary" (click)="onTodoToggle(todo.id, todo.completed)"/>
+        </div>
+      
+    }
+    </div>
+   
+
+</p-panel>
+

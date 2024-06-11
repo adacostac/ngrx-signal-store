@@ -1,0 +1,19 @@
+<div class="app">
+
+  <div class="angular-univ-container">
+    <img src="https://yt3.ggpht.com/I4K7_f1NWzaql2XI5zHwL5jkjGbmAnItH4Z_wWmP0DvlYEy86fiFvMduGa1zP-b6G-NO6FjMhg=s88-c-k-c0x00ffffff-no-rj">
+    <h1>Angular University</h1>
+    <a href="https://angular-university.io">Angular University</a>
+  </div>
+
+  @if(!store.loading()) {
+    <todos-list></todos-list>
+  } @else {
+    <p-progressSpinner styleClass="w-4rem h-4rem" 
+    strokeWidth="8" 
+    fill="var(--surface-ground)" 
+    animationDuration=".5s"></p-progressSpinner>
+  }
+  
+
+</div>
